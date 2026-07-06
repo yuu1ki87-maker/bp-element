@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BP素® 注射用核糖核酸II — 细胞免疫疗法 主动双向调节免疫力</title>
+<style>
+  :root {
+    --primary: #d4920a;
+    --primary-light: #fef9f0;
+    --primary-dark: #9e6b0e;
+    --green: #3a8f5c;
+    --green-light: #eef8f2;
+    --accent: #e87d2f;
+    --accent-light: #fef5ee;
+    --bg: #f9f9f6;
+    --bg-card: #ffffff;
+    --text: #2c3e50;
+    --text-light: #5a6c7d;
+    --border: #e0e5e9;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-size: 19px; font-weight: 700; color: var(--primary-dark);
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex; gap: 20px; list-style: none; flex-wrap: wrap;
+  }
+  .nav-links a {
+    text-decoration: none; font-size: 16px; color: var(--text-light);
+    font-weight: 500; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  @media (max-width: 768px) {
+    .nav-inner { flex-direction: column; height: auto; padding: 10px 0; gap: 8px; }
+    .nav-links { gap: 12px; justify-content: center; }
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: linear-gradient(135deg, #c47e0a 0%, #d4920a 40%, #e8a817 100%);
+    color: #fff; text-align: center; padding: 18px 24px 16px;
+    position: relative; overflow: hidden;
+  }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; margin-bottom: 4px; }
+  .hero .sub { font-size: 20px; font-weight: 400; opacity: .9; }
+  .hero .badge {
+    display: inline-block; margin-top: 8px;
+    background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+    border-radius: 20px; padding: 6px 20px; font-size: 15px; letter-spacing: .5px;
+  }
+  .hero-product {
+    position: absolute; right: 32px; bottom: 24px;
+    max-width: 400px; width: 100%; height: auto;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
+    opacity: 0.95;
+  }
+  @media (max-width: 768px) {
+    .hero-product { max-width: 220px; right: 12px; bottom: 12px; }
+  }
+
+  /* ---- SECTION ---- */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; position: relative; }
+  section:nth-child(even) { background: #fff; }
+  section::after {
+    content: '';
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    width: 100px;
+    height: 100px;
+    background: url(外包装.png) no-repeat center/contain;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 34px); font-weight: 700;
+    text-align: center; margin-bottom: 36px; color: var(--primary-dark);
+  }
+  .section-title span {
+    display: block; font-size: 16px; font-weight: 500; color: var(--text-light);
+    margin-top: 4px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* ---- CARDS ---- */
+  .card-grid { display: grid; gap: 20px; }
+  .cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card {
+    background: var(--bg-card); border-radius: var(--radius);
+    padding: 28px; box-shadow: var(--shadow); border: 1px solid var(--border);
+  }
+  .card h3 { font-size: 20px; color: var(--primary-dark); margin-bottom: 8px; }
+  .card p, .card li { font-size: 16px; color: var(--text-light); line-height: 1.8; }
+
+  .info-row {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 8px 16px; font-size: 16px; margin-bottom: 6px;
+  }
+  .info-row .label { font-weight: 600; color: var(--primary-dark); }
+  .info-row .value { color: var(--text-light); }
+  @media (max-width: 600px) {
+    .info-row { grid-template-columns: 1fr; gap: 0; }
+    .info-row .label { margin-top: 8px; }
+  }
+
+  /* ---- TABLE ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 16px;
+    min-width: 720px; border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  thead { background: var(--primary); color: #fff; }
+  th { padding: 14px 16px; text-align: left; font-weight: 600; font-size: 15px; white-space: nowrap; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-light); }
+  tbody tr:hover { background: var(--primary-light); }
+  .highlight-col { background: #fef9f0; font-weight: 600; color: var(--primary-dark); }
+  .check { color: #3a8f5c; font-weight: 700; }
+  .cross { color: #c0392b; }
+
+  /* ---- QUIZ ---- */
+  .quiz-block {
+    background: var(--bg-card); border-radius: var(--radius);
+    padding: 32px 28px; box-shadow: var(--shadow); border: 1px solid var(--border);
+    max-width: 720px; margin: 0 auto;
+  }
+  .quiz-q { margin-bottom: 24px; }
+  .quiz-q .q-title {
+    font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 10px;
+  }
+  .quiz-q .q-options { display: flex; flex-direction: column; gap: 6px; }
+  .quiz-q label {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    cursor: pointer; transition: all .2s; font-size: 16px; color: var(--text-light);
+  }
+  .quiz-q label:hover { border-color: var(--primary); background: var(--primary-light); }
+  .quiz-q input[type="radio"] { accent-color: var(--primary); width: 18px; height: 18px; }
+  .btn {
+    display: inline-block; padding: 12px 40px; font-size: 17px; font-weight: 600;
+    border: none; border-radius: 28px; cursor: pointer; transition: all .2s;
+    margin-top: 16px;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-outline {
+    background: #fff; color: var(--primary); border: 2px solid var(--primary);
+    margin-left: 12px;
+  }
+  .btn-outline:hover { background: var(--primary-light); }
+
+  .result-box {
+    margin-top: 28px; padding: 24px; border-radius: var(--radius);
+    display: none; border: 2px solid var(--primary);
+  }
+  .result-box.show { display: block; }
+  .result-box .score { font-size: 40px; font-weight: 800; color: var(--primary); }
+  .result-box .level { font-size: 20px; font-weight: 700; margin: 4px 0 12px; }
+  .result-box .advice { font-size: 16px; color: var(--text-light); line-height: 1.8; }
+
+  /* ---- DOSAGE CARDS ---- */
+  .dosage-card {
+    background: var(--green-light); border: 2px solid var(--green);
+    border-radius: var(--radius); padding: 24px;
+  }
+  .dosage-card h4 { font-size: 19px; color: #1d5c36; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+  /* ---- REGIMEN TABLE non-scroll fix ---- */
+  .regimen-table { min-width: 800px; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #2a2218; color: rgba(255,255,255,.65);
+    text-align: center; padding: 32px 24px; font-size: 15px; line-height: 1.8;
+  }
+  footer strong { color: rgba(255,255,255,.9); }
+
+  html { scroll-behavior: smooth; }
+
+  /* 深色模式 */
+  body.dark { --primary: #e8a817; --primary-light: #2a2005; --primary-dark: #f0c040;
+    --green: #4caf78; --green-light: #1a2a1a;
+    --accent: #f09050; --accent-light: #2a1510;
+    --bg: #1a1a1e; --bg-card: #252528; --text: #e0e0e0;
+    --text-light: #a0a0a8; --border: #3a3a40; --shadow: 0 2px 12px rgba(0,0,0,0.3); }
+  body.dark nav { background: rgba(26,26,30,0.94); }
+  body.dark section:nth-child(even) { background: #1e1e22; }
+  body.dark .hero { background: linear-gradient(135deg, #8a5a05 0%, #9e6b0e 40%, #c47e0a 100%); }
+  body.dark thead { background: #8a5a05; }
+
+  /* 导航高亮 */
+  .nav-links a.active { color: var(--primary); font-weight: 700; }
+
+  /* 回到顶部 */
+  #backTop { position: fixed; bottom: 32px; right: 32px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff;
+    border: none; cursor: pointer; font-size: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    opacity: 0; transform: translateY(20px); transition: all .3s; pointer-events: none; }
+  #backTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #backTop:hover { background: var(--primary-dark); }
+
+  /* 主题切换按钮 */
+  .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 20px;
+    padding: 4px 12px; font-size: 14px; cursor: pointer; color: var(--text-light);
+    transition: all .2s; }
+  .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+  body.dark .theme-toggle { color: #e0e0e0; }
+
+  /* 排序指示 */
+  th.sortable { cursor: pointer; user-select: none; position: relative; padding-right: 22px !important; }
+  th.sortable::after { content: '⇅'; position: absolute; right: 6px; opacity: .4; font-size: 12px; }
+  th.sortable.asc::after { content: '↑'; opacity: 1; }
+  th.sortable.desc::after { content: '↓'; opacity: 1; }
+
+  /* 搜索框 */
+  .search-box { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .search-box input { flex: 1; min-width: 200px; padding: 8px 14px; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); font-size: 14px; background: var(--bg-card); color: var(--text);
+    outline: none; transition: border-color .2s; }
+  .search-box input:focus { border-color: var(--primary); }
+  .search-box .clear-btn { padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    background: var(--bg-card); color: var(--text-light); cursor: pointer; font-size: 13px; }
+  .search-box .result-count { font-size: 13px; color: var(--text-light); }
+  tr.hidden-row { display: none; }
+  tr.highlight-row td { background: #fff9c4 !important; }
+  body.dark tr.highlight-row td { background: #3d3500 !important; }
+
+  /* 竞品列切换 */
+  .col-toggle { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .col-toggle button { padding: 5px 12px; border: 1px solid var(--border); border-radius: 16px;
+    background: var(--bg-card); color: var(--text-light); cursor: pointer; font-size: 12px;
+    transition: all .2s; }
+  .col-toggle button.on { background: var(--primary); color: #fff; border-color: var(--primary); }
+  body.dark .col-toggle button.on { color: #1a1a1e; }
+
+  /* 导出按钮 */
+  .export-btn { padding: 9px 20px; border: 2px solid var(--primary); border-radius: var(--radius-sm);
+    background: #fff; color: var(--primary); cursor: pointer; font-size: 14px; font-weight: 600;
+    transition: all .2s; }
+  .export-btn:hover { background: var(--primary); color: #fff; }
+  body.dark .export-btn { background: var(--bg-card); }
+
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">BP素® 注射用核糖核酸II</div>
+    <ul class="nav-links">
+      <li><a href="#intro">产品介绍</a></li>
+      <li><a href="#evidence">循证医学</a></li>
+      <li><a href="#dosage">用法用量</a></li>
+      <li><a href="#regimens">用药方案</a></li>
+      <li><a href="#compare">竞品对比</a></li>
+      <li><a href="#quiz">免疫力自测</a></li>
+      <li><a href="#applications">应用场景</a></li>
+      <li><a href="#safety">安全性</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式">🌓 深色</button>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
+  <h1>BP素® 注射用核糖核酸II</h1>
+  <p class="sub">细胞免疫疗法 &nbsp;·&nbsp; 主动双向调节免疫力</p>
+  <div class="badge">国药准字 H22020007 &nbsp;|&nbsp; 吉林敖东药业集团延吉股份有限公司</div>
+  <div style="margin-top:12px; display:flex; justify-content:center; flex-wrap:wrap; align-items:center;">
+    <img src="西林瓶_抠图.png" alt="BP素注射用核糖核酸II西林瓶" style="max-width:240px; width:100%; height:auto; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));">
+  </div>
+</header>
+
+<!-- ====== 产品介绍 ====== -->
+<section id="intro">
+  <div class="container">
+    <h2 class="section-title">产品介绍<span>Product Introduction</span></h2>
+    <div class="card-grid cols-2">
+      <div class="card">
+        <h3>药品基本信息</h3>
+        <div class="info-row"><div class="label">通用名称</div><div class="value">注射用核糖核酸II</div></div>
+        <div class="info-row"><div class="label">商品名</div><div class="value">BP素®</div></div>
+        <div class="info-row"><div class="label">批准文号</div><div class="value">国药准字 H22020007</div></div>
+        <div class="info-row"><div class="label">生产厂家</div><div class="value">吉林敖东药业集团延吉股份有限公司</div></div>
+        <div class="info-row"><div class="label">主要成分</div><div class="value">核糖核酸（提取自牛胰脏），辅料：甘露醇</div></div>
+        <div class="info-row"><div class="label">剂型</div><div class="value">冻干粉针，50mg/支</div></div>
+        <div class="info-row"><div class="label">适应症</div><div class="value" style="font-size:15px;">免疫调节药。适用于胰腺癌、肝癌、胃癌、肺癌、乳腺癌、软组织肉瘤及其他癌症的辅助治疗，对乙型肝炎的辅助治疗有较好的效果。亦可用于其他免疫机能低下引起的各种疾病。</div></div>
+        <div class="info-row"><div class="label">禁忌</div><div class="value">对本品过敏者禁用</div></div>
+      </div>
+      <div class="card">
+        <h3>产品定位与荣誉</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>独家品种，拥有<strong>三项发明专利</strong></li>
+          <li>国家科信部认定的<strong>"重大创新药"</strong></li>
+          <li>国家科技部认证<strong>高新技术新药</strong></li>
+          <li>CFDA批准唯一可大剂量使用的核糖核酸</li>
+          <li>近<strong>20年</strong>各大医院临床用药经验</li>
+          <li>2003年非典疫情阻击战中得到充分验证</li>
+          <li>2020年国家工信部确定的<strong>首批抗击新冠疫情药物</strong></li>
+          <li>多部临床路径推荐用药（呼吸疾病、普通外科、妇产科、胸外科、肿瘤科）</li>
+          <li>在患者高热情况下可用，且有迅速退烧作用</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>药理作用与作用机制</h3>
+      <p>本品具有提高机体细胞免疫功能和抑瘤作用。动物实验表明核糖核酸可明显抑制带瘤小鼠肿瘤的生长，使实体瘤体积缩小或消失，其<strong>抑瘤率为68.3%</strong>。病理组织学证实，本品能引起瘤细胞空泡样变性和液化性坏死，在其周围有大量增生纤维芽细胞、巨噬细胞和淋巴细胞，甚至以结缔组织代替瘤组织。</p>
+      <div class="card-grid cols-3" style="margin-top:16px;">
+        <div class="card" style="background:var(--primary-light); border-color:var(--primary);">
+          <h3 style="font-size:16px;">激活免疫系统</h3>
+          <p>刺激免疫细胞，同时激活体液免疫和细胞免疫系统，实现主动双向调节。</p>
+        </div>
+        <div class="card" style="background:var(--primary-light); border-color:var(--primary);">
+          <h3 style="font-size:16px;">促进T淋巴细胞增殖</h3>
+          <p>促进T淋巴细胞分化、发育、成熟，增加T淋巴细胞数量，从根本上提升细胞免疫功能。</p>
+        </div>
+        <div class="card" style="background:var(--primary-light); border-color:var(--primary);">
+          <h3 style="font-size:16px;">促进细胞修复</h3>
+          <p>促进肝细胞增殖，有利于细胞修复；补充外源性核糖核酸增加ATP数量，改善造血功能；减轻肝纤维化，保护肝细胞。</p>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-size:14px; color:var(--text-light);">
+        <strong>疗效特点：</strong>①主要提升细胞免疫功能，更侧重于治疗；②不易产生耐受性，有利于长期应用；③起效稍慢于其他免疫制剂，但作用时间长（一疗程维持4-6个月）；④除免疫调节外，还有利于细胞修复，对身体无毒副作用。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 循证医学 ====== -->
+<section id="evidence" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">循证医学<span>Evidence-Based Medicine — 临床研究文献集</span></h2>
+    <p style="text-align:center; font-size:14px; color:var(--text-light); margin-bottom:32px;">
+      以下研究数据来源于已发表的临床研究文献及真实世界研究报告，涵盖肿瘤、呼吸、消化、皮肤等多个治疗领域。
+    </p>
+
+    <!-- 真实世界研究 -->
+    <h3 style="font-size:20px; color:var(--primary-dark); margin-bottom:20px; border-left:4px solid var(--accent); padding-left:12px;">真实世界研究（多中心大样本）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:28%;">研究名称</th><th style="width:10%;" class="sortable" onclick="sortTable(this,0,this.closest('table'))">研究类型</th><th style="width:8%;" class="sortable" onclick="sortTable(this,0,this.closest('table'))">样本量</th><th style="width:8%;" class="sortable" onclick="sortTable(this,0,this.closest('table'))">中心数</th><th>关键结论</th><th style="width:14%;">发表期刊/年份</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>注射用核糖核酸II联合化疗治疗晚期NSCLC效果及安全性</strong></td>
+            <td>多中心回顾性对照研究</td>
+            <td class="highlight-col">2,111例</td>
+            <td>8家</td>
+            <td style="font-size:15px;">观察组中位OS <strong>18.51个月</strong> vs 对照组15.65个月（P=0.001）；中位PFS <strong>7.00个月</strong> vs 5.49个月（P=0.003）。鳞状细胞癌患者死亡风险降低<strong>26.4%</strong>。安全性良好，未增加不良反应发生率。</td>
+            <td style="font-size:12px;">肿瘤研究与临床<br>2021年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II改善晚期胰腺癌化疗患者整体获益可能性的真实世界研究</strong></td>
+            <td>真实世界回顾性研究</td>
+            <td class="highlight-col">923例</td>
+            <td>10家</td>
+            <td style="font-size:15px;">中位OS 7.5个月 vs 对照组6.7个月。无肝转移患者为<strong>潜在优势人群</strong>，生存获益趋势明显。不良事件发生率略低于对照组（88.7% vs 92.1%）。</td>
+            <td style="font-size:12px;">现代肿瘤医学<br>2022年</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 肿瘤领域临床研究 -->
+    <h3 style="font-size:20px; color:var(--primary-dark); margin:36px 0 20px; border-left:4px solid var(--primary); padding-left:12px;">肿瘤领域关键临床研究</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:28%;">研究名称</th><th style="width:10%;" class="sortable" onclick="sortTable(this,0,this.closest('table'))">研究类型</th><th style="width:8%;" class="sortable" onclick="sortTable(this,0,this.closest('table'))">样本量</th><th>关键结论</th><th style="width:14%;">来源/年份</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>BP素联合PF方案治疗中晚期恶性肿瘤</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">90例</td>
+            <td style="font-size:15px;">BP素组白细胞下降程度显著低于对照组（P&lt;0.05）；CD3、CD4、CD4/CD8、NK活性显著提高（P&lt;0.05）；精神状态好转<strong>86%</strong> vs 34%，食欲体重增加<strong>57%</strong> vs 23%。</td>
+            <td style="font-size:12px;">新乡医学院附属医院<br>2009年</td>
+          </tr>
+          <tr>
+            <td><strong>核糖核酸II对晚期癌症的疗效观察</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">40例</td>
+            <td style="font-size:15px;">观察组总有效率<strong>73.0%</strong> vs 对照组30.0%（P&lt;0.05）。生活质量总分88.41分 vs 76.62分（P&lt;0.05），生理、社会家庭、功能维度均显著改善。</td>
+            <td style="font-size:12px;">苏州大学附属常州肿瘤医院<br>2021年</td>
+          </tr>
+          <tr>
+            <td><strong>核糖核酸II联合培美曲塞+铂类治疗NSCLC</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">80例</td>
+            <td style="font-size:15px;">观察组ORR <strong>45.00%</strong> vs 对照组22.50%，DCR <strong>90.00%</strong> vs 60.00%（P&lt;0.05）。肿瘤标志物CEA、CA125、CK-19均显著降低。CD3⁺、CD4⁺显著高于对照组。</td>
+            <td style="font-size:12px;">吉林省肿瘤医院<br>2021年</td>
+          </tr>
+          <tr>
+            <td><strong>核糖核酸II对老年晚期NSCLC生存期及免疫功能影响</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">99例</td>
+            <td style="font-size:15px;">CD3⁺、CD4⁺、CD4⁺/CD8⁺显著提升（P&lt;0.05）；咳嗽、发热、乏力、恶液质发生率低于对照组；<strong>无进展生存期（PFS）显著延长</strong>（P&lt;0.05）。</td>
+            <td style="font-size:12px;">石家庄市第一医院<br>2015年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II对消化道肿瘤临床疗效观察</strong></td>
+            <td>单盲随机对照</td>
+            <td class="highlight-col">80例</td>
+            <td style="font-size:15px;">化疗后CD3⁺、CD4⁺、CD56⁺阳性率显著高于对照组（P&lt;0.05）；白细胞下降程度显著减轻；Karnofsky评分升高比例<strong>57.5%</strong> vs 42.5%。</td>
+            <td style="font-size:12px;">中国实用医药<br>2014年</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 呼吸/感染/肝病领域 -->
+    <h3 style="font-size:20px; color:var(--primary-dark); margin:36px 0 20px; border-left:4px solid var(--green); padding-left:12px;">呼吸、感染及肝病领域临床研究</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:28%;">研究名称</th><th style="width:10%;">研究类型</th><th style="width:8%;">样本量</th><th>关键结论</th><th style="width:14%;">来源/年份</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>施保利通联用核糖核酸II治疗老年肺炎</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">76例</td>
+            <td style="font-size:15px;">治疗组总有效率<strong>97.5%</strong> vs 对照组83.3%（P&lt;0.05）；IL-8、CRP、PCT水平显著改善，疗程缩短。</td>
+            <td style="font-size:12px;">昆明市儿童医院<br>2015年</td>
+          </tr>
+          <tr>
+            <td><strong>非特异免疫核糖核酸治疗小儿支气管哮喘及反复下呼吸道感染</strong></td>
+            <td>对照研究</td>
+            <td class="highlight-col">48例</td>
+            <td style="font-size:15px;">治疗组有效率<strong>91.7%</strong> vs 对照组47.2%；ERT（E-玫瑰花环试验）、LTT（淋巴细胞转化试验）、PHA皮试均显著提高。</td>
+            <td style="font-size:12px;">中国医科大学<br>二、三医院</td>
+          </tr>
+          <tr>
+            <td><strong>核糖核酸治疗慢性阻塞性肺病（COPD）临床观察</strong></td>
+            <td>对照研究</td>
+            <td class="highlight-col">69例</td>
+            <td style="font-size:15px;">IgG、IgM显著升高（P&lt;0.001）；CD3⁺显著升高。证实核糖核酸对COPD患者免疫功能有明确改善作用。</td>
+            <td style="font-size:12px;">煤炭总医院<br>2001年</td>
+          </tr>
+          <tr>
+            <td><strong>免疫核糖核酸佐治肺结核45例疗效分析</strong></td>
+            <td>对照研究</td>
+            <td class="highlight-col">45例</td>
+            <td style="font-size:15px;">病灶吸收率<strong>97.77%</strong> vs 对照组75%；痰菌阴转率<strong>78.3%</strong> vs 60%。2021年版《肺结核专家共识》将免疫治疗列为高级别证据强推荐。</td>
+            <td style="font-size:12px;">苏州市第五人民医院<br>1998年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II联合恩替卡韦治疗乙肝肝硬化</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">60例</td>
+            <td style="font-size:15px;">观察组总有效率<strong>93.33%</strong> vs 对照组73.33%（P&lt;0.05）；HA（透明质酸）显著降低，抗肝纤维化效果明确。</td>
+            <td style="font-size:12px;">2016年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II联合贺普丁治疗乙型肝炎</strong></td>
+            <td>随机对照</td>
+            <td class="highlight-col">112例</td>
+            <td style="font-size:15px;">HBV-DNA阴转率<strong>53.57%</strong> vs 对照组8.93%（P&lt;0.01）；ALT复常率<strong>89.29%</strong> vs 67.86%；不良反应低。</td>
+            <td style="font-size:12px;">湛江中心人民医院<br>2015年</td>
+          </tr>
+          <tr>
+            <td><strong>老年患者使用核糖核酸II的疗效观察</strong></td>
+            <td>对照研究</td>
+            <td class="highlight-col">50例</td>
+            <td style="font-size:15px;">IgG、IgA、IgM、CD3⁺、CD4⁺、CD8⁺均显著提高；呼吸道感染次数减少<strong>50%~67%</strong>；仅2例轻度头晕不良反应。</td>
+            <td style="font-size:12px;">湖北医药学院附属人民医院<br>2013年</td>
+          </tr>
+          <tr>
+            <td><strong>免疫核糖核酸和聚肌胞治疗扁平疣对比观察</strong></td>
+            <td>对照研究</td>
+            <td class="highlight-col">62例</td>
+            <td style="font-size:15px;">iRNA组有效率<strong>67.7%</strong> vs 对照组31.9%（P&lt;0.01），证实对病毒性皮肤病有明确治疗效果。</td>
+            <td style="font-size:12px;">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 基础药理研究 -->
+    <h3 style="font-size:20px; color:var(--primary-dark); margin:36px 0 20px; border-left:4px solid var(--accent); padding-left:12px;">基础药理研究</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:30%;">研究名称</th><th>关键发现</th><th style="width:14%;">来源/年份</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>注射用核糖核酸II抗肿瘤活性测定</strong></td>
+            <td style="font-size:15px;">对多种肿瘤细胞抑制率：K562（红白血病）<strong>83.6%</strong>、L929（成纤维细胞）<strong>85.7%</strong>、UMR-106（骨肉瘤）<strong>81.3%</strong>、H292（淋巴结肺癌转移）<strong>75.2%</strong>、SMMC-7721（肝癌）<strong>55.3%</strong>。对正常肝细胞抑制率为-33.8%（<strong>促进正常细胞增殖</strong>）。</td>
+            <td style="font-size:12px;">中国医药工业杂志<br>2015年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II上调p53诱导人白血病细胞凋亡</strong></td>
+            <td style="font-size:15px;">100-300mg/L处理K562和KG1a细胞后，呈时间剂量依赖性抑制增殖；上调<strong>p53</strong>、Bax和cleaved caspase-3，下调Bcl-2，通过<strong>线粒体凋亡通路</strong>诱导白血病细胞凋亡。</td>
+            <td style="font-size:12px;">中国药理学通报<br>2016年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用核糖核酸II对人横纹肌肉瘤细胞增殖和凋亡的调控</strong></td>
+            <td style="font-size:15px;">激活p21，下调CDK2、CDK4，将RD细胞周期<strong>阻滞在S期</strong>；下调Akt、JNK磷酸化抑制增殖；通过Bcl-2/Bax通路破坏线粒体完整性诱导凋亡。</td>
+            <td style="font-size:12px;">中国药理学通报<br>2018年</td>
+          </tr>
+          <tr>
+            <td><strong>上调miR-320a增强核糖核酸II对肝癌Bel-7402细胞的作用</strong></td>
+            <td style="font-size:15px;">将细胞周期阻滞在G₀/G₁期；激活p53通路，破坏Bcl-2/Bax比例促进凋亡；抑制MMP-9表达，<strong>抑制肝癌细胞迁移和侵袭</strong>。miR-320a可增强肝癌细胞对药物的敏感性。</td>
+            <td style="font-size:12px;">中国药理学通报<br>2017年</td>
+          </tr>
+          <tr>
+            <td><strong>注射用免疫核糖核酸II的免疫调节及对顺铂的增效减毒作用</strong></td>
+            <td style="font-size:15px;">显著增强顺铂对肿瘤细胞的杀伤效果（<strong>增效作用</strong>），同时减轻顺铂所致的体重下降和免疫器官损伤（<strong>减毒作用</strong>），提升化疗耐受性。</td>
+            <td style="font-size:12px;">中国医药生物技术<br>2016年</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:32px; background:var(--primary-light); border-color:var(--primary);">
+      <h3 style="font-size:17px; color:var(--primary-dark);">循证医学总结</h3>
+      <p style="font-size:14px; color:var(--text-light); line-height:2;">
+        <strong>证据等级：</strong>涵盖2项多中心真实世界研究（累计3,034例）、10+项随机/对照临床研究，覆盖肿瘤、呼吸、感染、肝病、皮肤等多个领域。<br>
+        <strong>核心结论：</strong>注射用核糖核酸II（BP素）可显著提升CD3⁺、CD4⁺等免疫指标，延长NSCLC患者中位OS（+2.86个月）和PFS（+1.51个月），降低化疗不良反应；在多种肿瘤细胞中抑制率达55%~86%，且对正常肝细胞无毒（促进增殖）；在肝炎、COPD、哮喘、结核等非肿瘤领域亦有多项研究证实其免疫调节和辅助治疗价值。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 用法用量 ====== -->
+<section id="dosage" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">用法用量<span>Dosage & Administration</span></h2>
+    <div class="card-grid cols-2">
+      <div class="dosage-card">
+        <h4>静脉注射</h4>
+        <div class="info-row"><div class="label">溶媒</div><div class="value">5%葡萄糖注射液 或 0.9%氯化钠注射液</div></div>
+        <div class="info-row"><div class="label">剂量</div><div class="value">100~300mg/次（即2~6支）</div></div>
+        <div class="info-row"><div class="label">频率</div><div class="value">一日1次</div></div>
+        <div class="info-row"><div class="label">说明</div><div class="value">以溶媒溶解后静脉注射/静脉滴注，适用于病情较重或需大剂量给药的患者</div></div>
+      </div>
+      <div class="dosage-card">
+        <h4>肌肉注射</h4>
+        <div class="info-row"><div class="label">溶媒</div><div class="value">2ml无菌生理盐水 或 无菌注射用水</div></div>
+        <div class="info-row"><div class="label">剂量</div><div class="value">50~100mg/次（即1~2支）</div></div>
+        <div class="info-row"><div class="label">频率</div><div class="value">一日1次</div></div>
+        <div class="info-row"><div class="label">说明</div><div class="value">以溶媒溶解后肌肉注射，适用于常规治疗或维持治疗</div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px; background:var(--accent-light); border-color:var(--accent);">
+      <h3 style="color:var(--accent);">给药方式对比</h3>
+      <div class="card-grid cols-2" style="margin-top:12px;">
+        <div>
+          <p><strong>静脉注射优势：</strong>生物利用度100%，起效更快，适用于重症、癌症辅助治疗等需大剂量（100-300mg/日）的场景。</p>
+        </div>
+        <div>
+          <p><strong>肌肉注射优势：</strong>操作简便，适合基层诊所常规治疗（50-100mg/日），患者依从性更好。两种给药方式均安全可靠。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 用药方案 ====== -->
+<section id="regimens">
+  <div class="container">
+    <h2 class="section-title">用药方案<span>Treatment Regimens — 疑难病参考方案</span></h2>
+    <p style="text-align:center; font-size:14px; color:var(--text-light); margin-bottom:28px;">
+      以下方案来源于吉林敖东《疑难病诊疗方案本》（内部资料仅供专业人士参考），请遵医嘱使用。
+    </p>
+    <div class="table-wrap">
+      <table class="regimen-table">
+        <thead>
+          <tr><th>疾病/适应症</th><th>用量</th><th>用法与频率</th><th>疗程</th><th>联合建议</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>免疫力低下</strong></td><td>1支/次</td><td>每日1次，肌注或静滴</td><td>成人12支/疗程，小孩6支/疗程</td><td>—</td></tr>
+          <tr><td><strong>各种癌症</strong></td><td>2支/次</td><td>每日1次，静脉滴注</td><td>12次/疗程；晚期40支/2月，初期75支/4月</td><td>可联合化疗/中药方剂</td></tr>
+          <tr><td><strong>肺结节</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>24支/疗程</td><td>小金丸/夏枯草胶囊/清肺散结丸等</td></tr>
+          <tr><td><strong>乳腺结节</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>24支/疗程</td><td>乳癖散结胶囊/丹鹿胶囊/逍遥丸等</td></tr>
+          <tr><td><strong>甲状腺结节</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>24支/疗程</td><td>小金丸/平消片/夏枯草胶囊等</td></tr>
+          <tr><td><strong>带状疱疹</strong></td><td>1支/次</td><td>每日1次，静滴或肌注；前3天可每日2支</td><td>12支/疗程</td><td>阿昔洛韦/伐昔洛韦等抗病毒药</td></tr>
+          <tr><td><strong>慢性湿疹</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>润燥止痒胶囊+外用糖皮质激素</td></tr>
+          <tr><td><strong>慢性荨麻疹</strong></td><td>1支/次</td><td>A类：每日肌注1周→每周1次×12周<br>B类：常规对症<br>C类：每日肌注1周→每周2次×12周</td><td>分类治疗，约12周</td><td>A类：西替利嗪+左旋咪唑；B类：清热解毒+抗生素；C类：谷维素+维生素B</td></tr>
+          <tr><td><strong>白癜风</strong></td><td>1支/次</td><td>首月前2周：每日1次<br>首月后2周：隔日1次<br>次月：每周2次</td><td>30支/疗程</td><td>白灵片+白灵酊；梅花针/艾灸辅助</td></tr>
+          <tr><td><strong>银屑病（牛皮癣）</strong></td><td>1支/次</td><td>首月前2周：每日1次<br>首月后2周：隔日1次<br>次月：每周2次</td><td>30支/疗程</td><td>阿维A+复方青黛胶囊+卡泊三醇软膏</td></tr>
+          <tr><td><strong>急性呼吸道感染</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>3~6支</td><td>常规抗生素+对症治疗</td></tr>
+          <tr><td><strong>手足口病/疱疹性咽峡炎</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>3~6支</td><td>退热药+干扰素α喷雾+小儿豉翘清热颗粒</td></tr>
+          <tr><td><strong>慢性支气管炎</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>止咳祛痰药+平喘药</td></tr>
+          <tr><td><strong>慢性阻塞性肺疾病</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>稳定期：百令胶囊/补肺活血胶囊；急性期：痰热清注射液</td></tr>
+          <tr><td><strong>过敏性鼻炎</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>鼻用皮质类固醇+口服H1抗组胺药；中成药：玉屏风颗粒/辛芩颗粒</td></tr>
+          <tr><td><strong>哮喘</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>吸入性糖皮质激素+福莫特罗；中成药：小青龙制剂/平喘益气颗粒</td></tr>
+          <tr><td><strong>乙型肝炎</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程，2-3个疗程</td><td>核苷类似物（恩替卡韦/替诺福韦）+中药方剂</td></tr>
+          <tr><td><strong>肝硬化/肝腹水</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程，2-3个疗程</td><td>扶正化瘀胶囊/复方鳖甲软肝片</td></tr>
+          <tr><td><strong>类风湿性关节炎</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程，2个疗程</td><td>痹祺胶囊/益肾蠲痹丸/尪痹片等</td></tr>
+          <tr><td><strong>HPV感染</strong></td><td>1支/次</td><td>前2周每日1次→后2周隔日1次→次月每周2次</td><td>30支/疗程</td><td>干扰素α2b喷雾/阴道泡腾胶囊；男女同治</td></tr>
+          <tr><td><strong>反复妇科炎症</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>常规抗感染+保妇康栓/治糜灵栓</td></tr>
+          <tr><td><strong>肠系膜淋巴结肿大</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>6支/疗程</td><td>抗生素+四磨汤口服液/沙棘干乳剂</td></tr>
+          <tr><td><strong>颈部淋巴结肿大</strong></td><td>1支/次</td><td>每日1次，静滴或肌注</td><td>12支/疗程</td><td>标准抗生素+红花酒精外敷</td></tr>
+          <tr><td><strong>结核</strong></td><td>1支/次</td><td>隔日1次，静滴或肌注</td><td>12支/疗程，2个疗程</td><td>标准化疗方案（INH+RFP+PZA+EMB）+结核丸</td></tr>
+          <tr><td><strong>外阴白斑</strong></td><td>2ml/次</td><td>病变部位皮下或粘膜下注射，隔日1次</td><td>12支/疗程</td><td>保持外阴清洁干燥，忌辛辣</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 竞品对比 ====== -->
+<section id="compare" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">竞品对比<span>Competitive Comparison</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>对比维度</th>
+            <th class="highlight-col">注射用核糖核酸II</th>
+            <th>免疫球蛋白</th>
+            <th>人胎盘组织液</th>
+            <th>人胎盘脂多糖</th>
+            <th>白介素-2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>主要成分</strong></td>
+            <td class="highlight-col">核糖核酸 50mg</td>
+            <td>IgG抗体</td>
+            <td>胎盘组织水解混合物</td>
+            <td>脂多糖+核酸 40μg</td>
+            <td>重组白介素-2</td>
+          </tr>
+          <tr>
+            <td><strong>作用机理</strong></td>
+            <td class="highlight-col">激活体液+细胞免疫；促进T淋巴细胞增殖，根本提升免疫力</td>
+            <td>外源性抗体→仅激活体液免疫（单向）</td>
+            <td>多糖激活免疫细胞→体液+细胞免疫</td>
+            <td>多糖激活免疫细胞→体液+细胞免疫</td>
+            <td>生长因子促进淋巴细胞增殖</td>
+          </tr>
+          <tr>
+            <td><strong>免疫方向</strong></td>
+            <td class="highlight-col"><span class="check">双向调节</span></td>
+            <td><span class="cross">单向（仅体液）</span></td>
+            <td>双向</td>
+            <td>双向</td>
+            <td><span class="cross">单向（仅细胞）</span></td>
+          </tr>
+          <tr>
+            <td><strong>持续时长</strong></td>
+            <td class="highlight-col"><span class="check">4-6个月</span></td>
+            <td><span class="cross">仅28天</span></td>
+            <td>短期</td>
+            <td>短期</td>
+            <td>短期</td>
+          </tr>
+          <tr>
+            <td><strong>长期使用</strong></td>
+            <td class="highlight-col"><span class="check">可长期使用</span></td>
+            <td><span class="cross">不建议（致B细胞脱敏）</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cross">不建议</span></td>
+          </tr>
+          <tr>
+            <td><strong>适应症范围</strong></td>
+            <td class="highlight-col"><span class="check">免疫低下引起的各类疾病（说明书明确）</span></td>
+            <td>重症感染急救</td>
+            <td>妇科、皮肤科慢性炎症</td>
+            <td>感冒、慢性支气管炎及哮喘</td>
+            <td>肾癌、恶性黑色素瘤等</td>
+          </tr>
+          <tr>
+            <td><strong>给药方式</strong></td>
+            <td class="highlight-col"><span class="check">静脉注射 + 肌肉注射</span></td>
+            <td>静脉注射</td>
+            <td><span class="cross">仅肌肉注射</span></td>
+            <td><span class="cross">仅肌肉注射</span></td>
+            <td>静脉注射</td>
+          </tr>
+          <tr>
+            <td><strong>储存条件</strong></td>
+            <td class="highlight-col"><span class="check">阴凉（≤20℃）</span></td>
+            <td>2-8℃</td>
+            <td><span class="cross">2-8℃ 冷链</span></td>
+            <td><span class="cross">2-8℃ 冷链</span></td>
+            <td><span class="cross">2-8℃ 冷链</span></td>
+          </tr>
+          <tr>
+            <td><strong>不良反应率</strong></td>
+            <td class="highlight-col"><span class="check">0.22%（偶见）</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cross">常见发热、寒颤</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:24px; background:var(--accent-light); border-color:var(--accent);">
+      <h3 style="color:var(--accent);">核心优势总结</h3>
+      <p>
+        胎盘类产品主要成分核酸含量极低，仅为本品的<strong>万分之一</strong>，且需冷链储存（2-8℃）。注射用核糖核酸II通过大剂量核糖核酸（50mg），不仅能激活免疫细胞，更能<strong>增加T淋巴细胞数量</strong>，从根本长效提升免疫力。适应症明确覆盖"免疫低下引起的各类疾病"，临床合规性更强。阴凉保存（≤20℃），无需冷链，使用更便捷安全。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 免疫力自测 ====== -->
+<section id="quiz">
+  <div class="container">
+    <h2 class="section-title">免疫力自评问卷<span>Immune Self-Assessment</span></h2>
+    <div class="quiz-block" id="quizForm">
+      <div id="questions"></div>
+      <div style="text-align:center;">
+        <button class="btn btn-primary" onclick="calcScore()">提交评估</button>
+        <button class="btn btn-outline" onclick="resetQuiz()">重新测试</button>
+      </div>
+      <div class="result-box" id="resultBox">
+        <div class="score" id="scoreNum"></div>
+        <div class="level" id="levelText"></div>
+        <div class="advice" id="adviceText"></div>
+        <div style="margin-top:20px; padding:16px; background:#fffde7; border-radius:10px; border:1px solid #f9a825; text-align:left; font-size:15px; color:#5d4037;">
+          <strong>建议进一步进行以下临床检测以获取客观评估：</strong>血常规、T淋巴细胞亚群（CD3⁺/CD4⁺/CD8⁺）、免疫球蛋白（IgG/IgA/IgM/IgE）、补体C3/C4。
+        </div>
+      </div>
+    </div>
+
+    
+        <div style="text-align:center;margin-top:16px;"><button class="export-btn" onclick="exportResult()">导出结果为图片</button></div>
+    </div>
+
+    <!-- 权威评估指标参考表 -->
+    <div class="card" style="margin-top:28px;">
+      <h3>临床权威评估指标参考</h3>
+      <p style="font-size:14px; color:var(--text-light); margin-bottom:16px;">
+        以下指标为国内外临床免疫学通用的实验室检测标准，可用于客观评估机体免疫功能状态。数据参考《临床免疫学检验技术》（全国高等学校教材）及<em>Manual of Molecular and Clinical Laboratory Immunology</em> (ASM Press)。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:18%;">检测类别</th><th style="width:26%;">检测项目</th><th style="width:18%;">正常参考范围</th><th>偏低/异常临床意义</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="5" style="vertical-align:middle;"><strong>T淋巴细胞亚群</strong><br><span style="font-size:12px;color:var(--text-light);">（流式细胞术）</span></td>
+              <td>CD3⁺ 总T细胞</td>
+              <td>955~2,860 个/μL</td>
+              <td>T细胞总数不足，提示细胞免疫功能低下</td>
+            </tr>
+            <tr>
+              <td>CD4⁺ 辅助T细胞</td>
+              <td>550~1,440 个/μL</td>
+              <td style="color:#c0392b;">核心指标——低于200为严重免疫缺陷；提示易感染、肿瘤风险升高</td>
+            </tr>
+            <tr>
+              <td>CD8⁺ 细胞毒T细胞</td>
+              <td>320~1,250 个/μL</td>
+              <td>抗病毒/抗肿瘤能力不足</td>
+            </tr>
+            <tr>
+              <td>CD4⁺/CD8⁺ 比值</td>
+              <td>1.0~2.0</td>
+              <td style="color:#c0392b;">低于0.8提示免疫失衡；HIV/AIDS患者常低于0.5</td>
+            </tr>
+            <tr>
+              <td>NK细胞（CD16⁺CD56⁺）</td>
+              <td>150~1,100 个/μL</td>
+              <td>天然免疫监视能力下降，抗肿瘤第一道防线减弱</td>
+            </tr>
+            <tr>
+              <td rowspan="4" style="vertical-align:middle;"><strong>免疫球蛋白</strong><br><span style="font-size:12px;color:var(--text-light);">（免疫比浊法）</span></td>
+              <td>IgG</td>
+              <td>7.0~16.0 g/L</td>
+              <td>体液免疫主力——偏低致反复细菌感染</td>
+            </tr>
+            <tr>
+              <td>IgA</td>
+              <td>0.7~4.0 g/L</td>
+              <td>黏膜免疫——偏低致呼吸道/消化道反复感染</td>
+            </tr>
+            <tr>
+              <td>IgM</td>
+              <td>0.4~2.3 g/L</td>
+              <td>早期免疫应答——偏低提示初次感染应答迟缓</td>
+            </tr>
+            <tr>
+              <td>IgE</td>
+              <td>＜ 100 IU/mL</td>
+              <td>与过敏/寄生虫感染相关；偏高提示过敏体质</td>
+            </tr>
+            <tr>
+              <td rowspan="2" style="vertical-align:middle;"><strong>补体系统</strong></td>
+              <td>C3</td>
+              <td>0.9~1.8 g/L</td>
+              <td>偏低见于系统性红斑狼疮、反复感染</td>
+            </tr>
+            <tr>
+              <td>C4</td>
+              <td>0.1~0.4 g/L</td>
+              <td>偏低提示补体消耗过多（免疫复合物病）</td>
+            </tr>
+            <tr>
+              <td rowspan="3" style="vertical-align:middle;"><strong>血常规</strong></td>
+              <td>白细胞计数 (WBC)</td>
+              <td>3.5~9.5 ×10⁹/L</td>
+              <td>偏低提示骨髓抑制、病毒感染或免疫低下</td>
+            </tr>
+            <tr>
+              <td>淋巴细胞绝对值</td>
+              <td>1.1~3.2 ×10⁹/L</td>
+              <td style="color:#c0392b;">低于1.0为淋巴细胞减少症，免疫功能显著下降</td>
+            </tr>
+            <tr>
+              <td>中性粒细胞绝对值</td>
+              <td>1.8~6.3 ×10⁹/L</td>
+              <td>偏低增加细菌感染风险</td>
+            </tr>
+            <tr>
+              <td style="vertical-align:middle;"><strong>炎症标志物</strong></td>
+              <td>C反应蛋白 (CRP)</td>
+              <td>＜ 5 mg/L</td>
+              <td>偏高提示体内存在炎症或组织损伤，免疫系统持续激活</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--text-light); margin-top:12px; line-height:1.7;">
+        <strong>使用说明：</strong>以上参考范围为成人通用标准，不同实验室因检测方法及试剂差异可能存在细微偏差。CD4⁺ T细胞计数和CD4⁺/CD8⁺比值是国际公认的免疫状态核心评价指标。建议将自评问卷结果与上述实验室指标结合，由临床医生综合评估后制定个体化免疫调节方案。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 应用场景 ====== -->
+<section id="applications" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">主要应用场景<span>Clinical Applications</span></h2>
+    <p style="text-align:center; font-size:15px; color:var(--text-light); margin-bottom:32px;">
+      90%的疾病均与机体免疫力相关，免疫力是人体最好的武器。注射用核糖核酸II适用于免疫机能低下引起的各种疾病。
+    </p>
+    <div class="card-grid cols-3">
+      <div class="card">
+        <h3>儿科</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>手足口病</li>
+          <li>疱疹性咽峡炎</li>
+          <li>反复感冒</li>
+          <li>过敏性鼻炎</li>
+          <li>哮喘</li>
+          <li>肠系膜淋巴结肿大</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>呼吸科</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>反复上呼吸道感染</li>
+          <li>流感（甲流/乙流）</li>
+          <li>急性咽喉炎/扁桃体炎</li>
+          <li>慢性支气管炎</li>
+          <li>慢性阻塞性肺疾病（COPD）</li>
+          <li>肺结核/淋巴结结核</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>皮肤科</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>银屑病（牛皮癣）</li>
+          <li>白癜风</li>
+          <li>慢性荨麻疹</li>
+          <li>慢性湿疹</li>
+          <li>带状疱疹及后遗神经痛</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>妇科</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>HPV病毒感染</li>
+          <li>宫颈炎、盆腔炎</li>
+          <li>复发性阴道炎</li>
+          <li>外阴白斑</li>
+          <li>宫颈糜烂</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>肿瘤科</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>胰腺癌辅助治疗</li>
+          <li>肝癌/胃癌/肺癌</li>
+          <li>乳腺癌辅助治疗</li>
+          <li>软组织肉瘤</li>
+          <li>降低放化疗不良反应</li>
+          <li>肺结节/乳腺结节/甲状腺结节</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>其他</h3>
+        <ul style="padding-left:18px; font-size:14px; color:var(--text-light); line-height:2.2;">
+          <li>乙型肝炎辅助治疗</li>
+          <li>肝硬化/肝腹水</li>
+          <li>类风湿性关节炎</li>
+          <li>强直性脊柱炎</li>
+          <li>免疫力低下反复患病</li>
+          <li>颈部淋巴结肿大</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 安全性 ====== -->
+<section id="safety">
+  <div class="container">
+    <h2 class="section-title">产品安全性<span>Safety Profile</span></h2>
+    <div class="card-grid cols-3">
+      <div class="card">
+        <h3>毒理研究</h3>
+        <p>与山东大学新药评价中心合作，完成急性毒性试验、长期毒性试验及制剂安全性试验。结果证明：<strong>无明显毒性作用</strong>，无溶血和致凝集作用，无致敏作用，无刺激性。病理学检查未见明显药物特异性改变。</p>
+      </div>
+      <div class="card">
+        <h3>临床监测</h3>
+        <p>与吉林省药品再评价协会合作，开展<strong>3013例</strong>不良反应重点监测。仅7例一般不良反应（头晕、心悸、皮疹、恶心等），发生率<strong>0.22%</strong>（偶见），安全性较高，风险可控。</p>
+      </div>
+      <div class="card">
+        <h3>横向对比</h3>
+        <p>不良反应发生率<strong>0.22%</strong>，显著低于常用抗生素左氧氟沙星的<strong>1.92%</strong>，安全性优势明显。工艺先进可靠，药品纯度远超《中国药典》规定的90%。</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px; background:var(--primary-light); border-color:var(--primary);">
+      <h3 style="font-size:15px;">注意事项</h3>
+      <p style="font-size:15px; color:var(--text-light);">
+        本品为处方药，请在医师指导下使用。对本品过敏者禁用。配伍禁忌：甲磺酸培氟沙星、乙胺碘呋酮、丁二磺酸腺苷蛋氨酸、葡萄糖酸依诺沙星。阴凉（20℃以下）保存。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>BP素® 注射用核糖核酸II</strong> — 国药准字 H22020007<br>
+  吉林敖东药业集团延吉股份有限公司 &nbsp;|&nbsp; 细胞免疫疗法 &nbsp;|&nbsp; 主动双向调节免疫力<br>
+  本网页内容仅供健康科普参考，不构成诊疗建议。请遵医嘱用药。
+</footer>
+
+<!-- ====== JS 免疫力自测 ====== -->
+<script>
+const quizData = [
+  {
+    q: "1. 您每年感冒/流感的次数？",
+    opts: ["几乎不感冒（0次）", "每年1-2次", "每年3-5次", "每年6次以上，几乎每月都感冒"]
+  },
+  {
+    q: "2. 感冒后通常多久恢复？",
+    opts: ["3天内自愈", "3-7天", "1-2周", "超过2周，或经常发展为支气管炎/肺炎"]
+  },
+  {
+    q: "3. 您是否容易疲劳、精力不足？",
+    opts: ["精力充沛，很少疲劳", "偶尔疲劳，休息后缓解", "经常疲劳，休息后难以恢复", "持续疲劳，严重影响日常生活"]
+  },
+  {
+    q: "4. 您是否有反复发作的皮肤问题（如湿疹、荨麻疹、疱疹等）？",
+    opts: ["从不", "偶尔有，很快好转", "时有反复", "经常发作且迁延不愈"]
+  },
+  {
+    q: "5. 您是否有慢性炎症性疾病（如慢性支气管炎、鼻炎、妇科炎症等）？",
+    opts: ["无", "有1种，已控制", "有1-2种，时有发作", "有多种，反复发作"]
+  },
+  {
+    q: "6. 您的伤口愈合速度如何？",
+    opts: ["很快，1-2天结痂", "正常，3-5天", "较慢，需一周以上", "非常慢，容易感染化脓"]
+  },
+  {
+    q: "7. 您是否有胃肠道不适（腹泻、便秘、食欲差等）？",
+    opts: ["从不", "偶尔", "经常", "持续存在，影响生活"]
+  },
+  {
+    q: "8. 您的睡眠质量如何？",
+    opts: ["很好，入睡快、睡得深", "一般", "较差，多梦易醒", "很差，长期失眠"]
+  },
+  {
+    q: "9. 您是否经常口腔溃疡？",
+    opts: ["从不", "偶尔（每年1-2次）", "经常（每季度都有）", "频繁（每月都有）"]
+  },
+  {
+    q: "10. 您是否有以下情况？",
+    opts: ["以上都没有，身体状态良好", "有1项慢性健康困扰", "有2-3项健康问题", "有多种健康问题，正在治疗中"]
+  }
+];
+
+function buildQuiz() {
+  const qDiv = document.getElementById('questions');
+  qDiv.innerHTML = quizData.map((item, i) => `
+    <div class="quiz-q">
+      <div class="q-title">${item.q}</div>
+      <div class="q-options">
+        ${item.opts.map((opt, j) => `
+          <label>
+            <input type="radio" name="q${i}" value="${j}">
+            ${opt}
+          </label>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function calcScore() {
+  let total = 0;
+  let allAnswered = true;
+  for (let i = 0; i < quizData.length; i++) {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (!selected) { allAnswered = false; continue; }
+    total += parseInt(selected.value);
+  }
+  if (!allAnswered) {
+    alert('请回答所有题目后再提交评估。');
+    return;
+  }
+
+  const maxScore = quizData.length * 3;
+  let level, advice;
+
+  if (total <= 5) {
+    level = '优秀 — 免疫力状态良好';
+    advice = '您的免疫力处于较好水平，身体防御能力强。建议保持规律作息、均衡饮食、适度运动，维持当前健康状态。';
+  } else if (total <= 12) {
+    level = '良好 — 免疫力基本正常';
+    advice = '您的免疫力总体正常，但有一些需要关注的信号。建议加强营养摄入（优质蛋白、维生素C/D、锌等），保证每天7-8小时睡眠，适度增加户外运动，减少熬夜和压力。';
+  } else if (total <= 20) {
+    level = '一般 — 免疫力有所下降';
+    advice = '您的免疫力出现下降趋势，身体可能处于亚健康状态。建议：①进行系统体检，排查潜在慢性炎症；②规律作息、戒烟限酒；③必要时咨询医生，评估是否需要进行免疫调节干预。注射用核糖核酸II可用于免疫机能低下引起的各类疾病，请在医师指导下使用。';
+  } else {
+    level = '需关注 — 免疫力明显偏低';
+    advice = '您的免疫力明显偏低，身体可能长期处于免疫低下状态，易受病原体侵袭且恢复缓慢。强烈建议：①尽快进行全面体检；②与医生详细沟通免疫调节治疗方案；③注射用核糖核酸II经临床验证可双向调节免疫力，适用于多种免疫低下相关疾病（如反复感染、皮肤顽疾、慢性炎症等），请咨询医生获取专业诊疗建议。';
+  }
+
+  const percent = Math.round((1 - total / maxScore) * 100);
+  document.getElementById('scoreNum').textContent = `${percent}分`;
+  document.getElementById('levelText').textContent = level;
+  document.getElementById('adviceText').textContent = advice;
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetQuiz() {
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('resultBox').classList.remove('show');
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+}
+
+buildQuiz();
+
+// ── 深色模式 ──
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.querySelector('.theme-toggle');
+  body.classList.toggle('dark');
+  btn.textContent = body.classList.contains('dark') ? '☀️ 浅色' : '🌓 深色';
+  localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+}
+(function() { if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark'); document.querySelector('.theme-toggle').textContent = '☀️ 浅色'; } })();
+
+// ── 滚动监听：导航高亮 + 回到顶部 ──
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+    backTop.classList.toggle('show', window.scrollY > 500);
+  });
+  // 平滑滚动
+  navLinks.forEach(a => { a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'}); }); });
+})();
+
+// ── 表格排序 ──
+function sortTable(th, colIdx, table) {
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const isAsc = th.classList.contains('asc');
+  // 重置所有排序指示
+  table.querySelectorAll('th.sortable').forEach(h => h.classList.remove('asc','desc'));
+  th.classList.add(isAsc ? 'desc' : 'asc');
+
+  rows.sort((a,b) => {
+    let va = (a.cells[colIdx]?.textContent || '').trim();
+    let vb = (b.cells[colIdx]?.textContent || '').trim();
+    // 尝试数字比较
+    let na = parseFloat(va.replace(/[^0-9.]/g,''));
+    let nb = parseFloat(vb.replace(/[^0-9.]/g,''));
+    if (!isNaN(na) && !isNaN(nb)) { return isAsc ? nb - na : na - nb; }
+    return isAsc ? vb.localeCompare(va, 'zh') : va.localeCompare(vb, 'zh');
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+// ── 用药方案搜索 ──
+function filterRegimens() {
+  const q = document.getElementById('regimenSearch').value.toLowerCase();
+  const table = document.querySelector('#regimens table');
+  if (!table) return;
+  const rows = table.querySelectorAll('tbody tr');
+  let count = 0;
+  rows.forEach(r => {
+    const match = r.textContent.toLowerCase().includes(q);
+    r.classList.toggle('hidden-row', q !== '' && !match);
+    r.classList.toggle('highlight-row', q !== '' && match);
+    if (match || q === '') count++;
+  });
+  document.getElementById('regimenCount').textContent = q ? `匹配 ${count} 条` : '';
+}
+function clearRegimenSearch() {
+  document.getElementById('regimenSearch').value = '';
+  filterRegimens();
+}
+
+// ── 竞品列切换 ──
+function toggleCompareCol(btn) {
+  const col = parseInt(btn.dataset.col);
+  btn.classList.toggle('on');
+  const show = btn.classList.contains('on');
+  // 切换表头
+  const table = document.getElementById('compareTable');
+  table.querySelectorAll(`th[data-col="${col}"]`).forEach(th => th.style.display = show ? '' : 'none');
+  // 切换每行对应列
+  table.querySelectorAll('tbody tr').forEach(tr => {
+    if (tr.cells[col]) tr.cells[col].style.display = show ? '' : 'none';
+  });
+}
+
+// ── 导出自测结果 ──
+async function exportResult() {
+  const box = document.getElementById('resultBox');
+  if (!box.classList.contains('show')) { alert('请先完成自测评估'); return; }
+  const { default: html2canvas } = await import('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.esm.js');
+  const canvas = await html2canvas(box, { scale: 2, backgroundColor: '#ffffff' });
+  const link = document.createElement('a');
+  link.download = '免疫力自测结果.png';
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
+</script>
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>
