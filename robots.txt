@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://yuu1ki87-maker.github.io/bp-element/sitemap.xml
+Disallow: /
